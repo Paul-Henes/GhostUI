@@ -1,0 +1,143 @@
+# Ghost-UI
+
+3-person hackathon team building a web accessibility platform (AccessAI).
+
+## Project Scope
+
+**Dashboard (Web App):** Compliance scanning, issue management, AI-powered code fixes, analytics
+**Extension (Ghost UI):** On-page accessibility customization (contrast, fonts, focus mode, custom CSS)
+**Backend:** API for auth, compliance, tracking, AI agents, preference sync
+
+### AI Agents
+- Accessibility Auditor (Gemini Vision) - Screenshot analysis for WCAG violations
+- Code Fixer (GPT-4) - Generates targeted code patches
+- UX Analyzer - Converts tracking data into insights
+
+## Team
+- Lucas: Compliance features, n8n node
+- Jannik: Auth, Tracking, Agents, Backend core, Supabase
+- Paul: Chrome Extension (complete)
+
+## Stack
+- Dashboard: React + Vite + Tailwind (Vercel)
+- Extension: Plasmo (Chrome)
+- Backend: FastAPI (Replit)
+- Database: Supabase
+
+## Hard Rules (Do Not Break)
+
+1. **NEVER work directly on main** — Always work on a feature branch. One branch per feature (e.g. `feat/auth`), not a new branch for every small change. Continue working in the existing feature branch until the feature is complete and merged.
+2. **NEVER push automatically** — Push is ALWAYS done manually by the developer. Cursor/AI should only commit locally, never push.
+3. **Never commit secrets** — No `.env` files, API keys, or credentials in code
+4. **Never push broken code to main** — Test before merging
+5. **Coordinate on hot files** — Announce in team chat before editing shared files
+
+## Hot Files (Coordinate Before Editing)
+- `.cursorrules` - Project config
+- `dashboard/src/App.tsx` - Routes
+- `backend/main.py` - API entry
+- `packages/shared-types/` - Shared types
+- `supabase/migrations/` - Database schema
+
+## Ownership Quick Reference
+| Area | Owner |
+|------|-------|
+| `/dashboard/src/features/compliance/` | Lucas |
+| `/dashboard/src/features/auth/` | Jannik |
+| `/dashboard/src/features/tracking/` | Jannik |
+| `/dashboard/src/features/agents/` | Jannik |
+| `/backend/app/api/compliance/` | Lucas |
+| `/backend/` (core) | Jannik |
+| `/extension/` | Paul |
+| `/packages/n8n-node/` | Lucas |
+| `/supabase/` | Jannik |
+
+## Coding Guidelines (Soft Preferences)
+
+### React / Dashboard
+- Prefer functional components with hooks
+- Prefer Tailwind utility classes over custom CSS
+- PascalCase for component files (`LoginForm.tsx`)
+- Keep components small and focused
+
+### FastAPI / Backend
+- Prefer async functions for endpoints
+- Use Pydantic models for request/response validation
+- Consistent error responses: `{"success": bool, "data": ..., "error": ...}`
+
+### Extension (Plasmo)
+- Follow Plasmo conventions for popup/contents/background
+- Use Chrome Storage API for local persistence
+- Sync preferences with dashboard via API
+
+### Accessibility (We're Building an A11y Tool!)
+- Use semantic HTML (`button`, `nav`, `main`) not div soup
+- Ensure keyboard navigation for interactive elements
+- Add ARIA labels for non-obvious UI elements
+
+## Git Workflow
+
+### Branch Strategy (CRITICAL)
+- **NEVER work on main** — Always create/use a feature branch first
+- One branch per feature, continue working in existing branch until merged
+- Available branches: `feat/auth`, `feat/tracking`, `feat/agents`
+
+### Branch Naming
+- Features: `feat/short-description`
+- Fixes: `fix/what-broke`
+- Experiments: `exp/idea-name`
+
+### Commit Messages
+- Present tense, descriptive: "Add login form", "Fix button crash"
+- Avoid vague messages: "fix stuff", "updates"
+
+### AI/Cursor Workflow
+- AI commits locally only — NEVER pushes automatically
+- Developer reviews commits and pushes manually
+- Always verify branch before making changes: `git branch`
+
+### Daily Habits
+- Pull `main` at start of day
+- **ALWAYS create a feature branch before coding** — never commit to main directly
+- Work on your own feature branch
+- Commit every 30-60 minutes
+- Push manually when ready
+
+### Before Merging
+- Pull latest `main` into your branch
+- Test that everything works
+- Merge to main and push (manually)
+
+## API Endpoints (Reference)
+
+```
+POST /api/auth/login, /signup, /logout
+GET  /api/auth/me
+
+GET/POST /api/user/preferences
+
+POST /api/compliance/scan
+GET  /api/compliance/scan/{id}
+GET  /api/compliance/scan/{id}/issues
+POST /api/compliance/fix
+
+POST /api/tracking/event
+GET  /api/tracking/analytics
+```
+
+## Quick Reference
+
+**⚠️ First step for ANY task: `git checkout -b feat/your-feature`**
+
+| Action | Command |
+|--------|---------|
+| **Start feature (ALWAYS FIRST!)** | `git checkout -b feat/name` |
+| Save work | `git add . && git commit -m "message"` |
+| Push branch | `git push origin feat/name` |
+| Sync with main | `git pull origin main` |
+| Merge to main | `git checkout main && git merge feat/name` |
+
+## Remember
+- Speed matters, but so does a working demo
+- When in doubt, communicate with the team
+- See `docs/PROJECT_CONTEXT.md` for full details

@@ -1,0 +1,82 @@
+{
+  "baden-wuerttemberg": {
+    "name": "Baden-Württemberg",
+    "schlichtungsstelle": "https://www.bfsg-schlichtung-bw.de/",
+    "marktueberwachung": "https://rp.baden-wuerttemberg.de/themen/wirtschaft/marktueberwachung/"
+  },
+  "bayern": {
+    "name": "Bayern",
+    "schlichtungsstelle": "https://www.stmi.bayern.de/buerger/barrierefrei/schlichtung/",
+    "marktueberwachung": "https://www.stmwi.bayern.de/marktueberwachung/"
+  },
+  "berlin": {
+    "name": "Berlin",
+    "schlichtungsstelle": "https://www.berlin.de/sen/inneres/buergerservice/schlichtungsstelle/",
+    "marktueberwachung": "https://www.berlin.de/sen/verbraucherschutz/marktueberwachung/"
+  },
+  "brandenburg": {
+    "name": "Brandenburg",
+    "schlichtungsstelle": "https://msgiv.brandenburg.de/msgiv/de/themen/soziales/schlichtungsstelle-barrierefreiheit/",
+    "marktueberwachung": "https://lavg.brandenburg.de/lavg/de/verbraucherschutz/marktueberwachung/"
+  },
+  "bremen": {
+    "name": "Bremen",
+    "schlichtungsstelle": "https://www.soziales.bremen.de/sixcms/detail.php?gsid=bremen69.c.16289.de",
+    "marktueberwachung": "https://www.gesundheit.bremen.de/verbraucherschutz/marktueberwachung-106836"
+  },
+  "hamburg": {
+    "name": "Hamburg",
+    "schlichtungsstelle": "https://www.hamburg.de/schlichtungsstelle-barrierefreiheit/",
+    "marktueberwachung": "https://www.hamburg.de/bwi/marktueberwachung/"
+  },
+  "hessen": {
+    "name": "Hessen",
+    "schlichtungsstelle": "https://soziales.hessen.de/soziales/menschen-mit-behinderung/schlichtungsstelle",
+    "marktueberwachung": "https://rp-kassel.hessen.de/verbraucherschutz-und-marktueberwachung"
+  },
+  "mecklenburg-vorpommern": {
+    "name": "Mecklenburg-Vorpommern",
+    "schlichtungsstelle": "https://www.regierung-mv.de/Landesregierung/sm/Soziales/Menschen-mit-Behinderungen/Schlichtungsstelle/",
+    "marktueberwachung": "https://www.lagus.mv-regierung.de/Verbraucherschutz/Marktueberwachung/"
+  },
+  "niedersachsen": {
+    "name": "Niedersachsen",
+    "schlichtungsstelle": "https://www.ms.niedersachsen.de/startseite/themen/soziales/menschen_mit_behinderungen/schlichtungsstelle/",
+    "marktueberwachung": "https://www.gewerbeaufsicht.niedersachsen.de/startseite/themen/marktueberwachung/"
+  },
+  "nordrhein-westfalen": {
+    "name": "Nordrhein-Westfalen",
+    "schlichtungsstelle": "https://www.mags.nrw/schlichtungsstelle",
+    "marktueberwachung": "https://www.mags.nrw/marktueberwachung"
+  },
+  "rheinland-pfalz": {
+    "name": "Rheinland-Pfalz",
+    "schlichtungsstelle": "https://msagd.rlp.de/themen/menschen-mit-behinderungen/schlichtungsstelle",
+    "marktueberwachung": "https://mwvlw.rlp.de/themen/verbraucherschutz/marktueberwachung"
+  },
+  "saarland": {
+    "name": "Saarland",
+    "schlichtungsstelle": "https://www.saarland.de/msgff/DE/themen/soziales/menschen_mit_behinderung/schlichtungsstelle/schlichtungsstelle.html",
+    "marktueberwachung": "https://www.saarland.de/mwaev/DE/themen/verbraucherschutz/marktueberwachung/marktueberwachung.html"
+  },
+  "sachsen": {
+    "name": "Sachsen",
+    "schlichtungsstelle": "https://www.soziales.sachsen.de/menschen-mit-behinderungen-4058.html",
+    "marktueberwachung": "https://www.lds.sachsen.de/marktueberwachung/"
+  },
+  "sachsen-anhalt": {
+    "name": "Sachsen-Anhalt",
+    "schlichtungsstelle": "https://ms.sachsen-anhalt.de/themen/menschen-mit-behinderungen/schlichtungsstelle/",
+    "marktueberwachung": "https://verbraucherschutz.sachsen-anhalt.de/marktueberwachung/"
+  },
+  "schleswig-holstein": {
+    "name": "Schleswig-Holstein",
+    "schlichtungsstelle": "https://www.schleswig-holstein.de/DE/landesregierung/ministerien-behoerden/MSGJFS/Themen/Soziales/MenschenmitBehinderungen/schlichtungsstelle.html",
+    "marktueberwachung": "https://www.schleswig-holstein.de/DE/fachinhalte/M/marktueberwachung/marktueberwachung.html"
+  },
+  "thueringen": {
+    "name": "Thüringen",
+    "schlichtungsstelle": "https://www.tmasgff.de/soziales/menschen-mit-behinderungen/schlichtungsstelle",
+    "marktueberwachung": "https://www.thueringen.de/th3/tlvwa/wirtschaft/marktueberwachung/"
+  }
+}

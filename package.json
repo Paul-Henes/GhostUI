@@ -1,0 +1,15 @@
+{
+  "name": "ghostui",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@8.15.4",
+  "description": "Web accessibility platform - Dashboard + Browser Extension",
+  "scripts": {
+    "dev:dashboard": "pnpm --filter dashboard dev",
+    "dev:extension": "pnpm --filter extension dev",
+    "build:dashboard": "pnpm --filter dashboard build",
+    "build:extension": "pnpm --filter extension build"
+  },
+  "keywords": ["accessibility", "wcag", "a11y"],
+  "license": "MIT"
+}

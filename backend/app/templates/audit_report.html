@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barrierefreiheits-Prüfbericht - {{ scan.url }}</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #1f2937;
+            background: #fff;
+            padding: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        .header {
+            border-bottom: 3px solid #3b82f6;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .header-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #3b82f6;
+            margin-bottom: 5px;
+        }
+        
+        .header-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 10px;
+        }
+        
+        .header-meta {
+            color: #6b7280;
+            font-size: 13px;
+        }
+        
+        /* Score Section */
+        .score-section {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 30px;
+        }
+        
+        .score-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .score-value {
+            font-size: 36px;
+            line-height: 1;
+        }
+        
+        .score-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+        
+        .score-high { background: #dcfce7; color: #166534; }
+        .score-medium { background: #fef9c3; color: #854d0e; }
+        .score-low { background: #fee2e2; color: #991b1b; }
+        
+        .score-details {
+            flex: 1;
+        }
+        
+        .score-details h2 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: #111827;
+        }
+        
+        .conformance-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .conformance-fully { background: #dcfce7; color: #166534; }
+        .conformance-partially { background: #fef9c3; color: #854d0e; }
+        .conformance-not { background: #fee2e2; color: #991b1b; }
+        
+        /* Summary Grid */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+        
+        .summary-card {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+        }
+        
+        .summary-card-value {
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+        
+        .summary-card-label {
+            font-size: 12px;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .color-critical { color: #dc2626; }
+        .color-serious { color: #ea580c; }
+        .color-moderate { color: #ca8a04; }
+        .color-minor { color: #2563eb; }
+        
+        /* Section */
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        
+        /* Issue Card */
+        .issue-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 12px;
+            background: #fff;
+        }
+        
+        .issue-card.severity-critical { border-left: 4px solid #dc2626; }
+        .issue-card.severity-serious { border-left: 4px solid #ea580c; }
+        .issue-card.severity-moderate { border-left: 4px solid #ca8a04; }
+        .issue-card.severity-minor { border-left: 4px solid #2563eb; }
+        
+        .issue-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+        
+        .issue-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .badge-critical { background: #fef2f2; color: #dc2626; }
+        .badge-serious { background: #fff7ed; color: #ea580c; }
+        .badge-moderate { background: #fefce8; color: #ca8a04; }
+        .badge-minor { background: #eff6ff; color: #2563eb; }
+        
+        .issue-wcag {
+            font-size: 12px;
+            color: #6b7280;
+            font-weight: 500;
+        }
+        
+        .issue-description {
+            margin-bottom: 8px;
+            color: #374151;
+        }
+        
+        .issue-location {
+            font-size: 12px;
+            color: #6b7280;
+            font-family: monospace;
+            background: #f3f4f6;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            word-break: break-all;
+        }
+        
+        .issue-recommendation {
+            font-size: 13px;
+            color: #059669;
+            background: #ecfdf5;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+        
+        .issue-recommendation strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+        
+        /* Footer */
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+            text-align: center;
+            color: #9ca3af;
+            font-size: 12px;
+        }
+        
+        /* Print styles */
+        @media print {
+            body {
+                padding: 20px;
+            }
+            .issue-card {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-logo">Ghost-UI</div>
+        <h1 class="header-title">Barrierefreiheits-Prüfbericht</h1>
+        <div class="header-meta">
+            <strong>URL:</strong> {{ scan.url }}<br>
+            <strong>Erstellt am:</strong> {{ generated_date }}
+        </div>
+    </header>
+    
+    <!-- Score Section -->
+    <section class="score-section">
+        <div class="score-circle {% if scan.score >= 80 %}score-high{% elif scan.score >= 50 %}score-medium{% else %}score-low{% endif %}">
+            <span class="score-value">{{ scan.score or 0 }}</span>
+            <span class="score-label">Punkte</span>
+        </div>
+        <div class="score-details">
+            <h2>Gesamtbewertung</h2>
+            <span class="conformance-badge conformance-{{ conformance }}">
+                {{ conformance_text }}
+            </span>
+            <p>
+                {% if scan.score >= 80 %}
+                Diese Website erfüllt die meisten WCAG 2.1 AA Anforderungen. Es wurden {{ total_issues }} Probleme gefunden, die behoben werden sollten.
+                {% elif scan.score >= 50 %}
+                Diese Website hat mehrere Barrierefreiheitsprobleme. Es wurden {{ total_issues }} Probleme gefunden, von denen einige kritisch sind.
+                {% else %}
+                Diese Website hat erhebliche Barrierefreiheitsmängel. Es wurden {{ total_issues }} Probleme gefunden, die dringend behoben werden müssen.
+                {% endif %}
+            </p>
+        </div>
+    </section>
+    
+    <!-- Summary Grid -->
+    <section class="summary-grid">
+        <div class="summary-card">
+            <div class="summary-card-value color-critical">{{ critical_count }}</div>
+            <div class="summary-card-label">Kritisch</div>
+        </div>
+        <div class="summary-card">
+            <div class="summary-card-value color-serious">{{ serious_count }}</div>
+            <div class="summary-card-label">Schwerwiegend</div>
+        </div>
+        <div class="summary-card">
+            <div class="summary-card-value color-moderate">{{ moderate_count }}</div>
+            <div class="summary-card-label">Moderat</div>
+        </div>
+        <div class="summary-card">
+            <div class="summary-card-value color-minor">{{ minor_count }}</div>
+            <div class="summary-card-label">Gering</div>
+        </div>
+    </section>
+    
+    <!-- Issues by Severity -->
+    {% if issues_by_severity.critical %}
+    <section class="section">
+        <h2 class="section-title">Kritische Probleme ({{ critical_count }})</h2>
+        {% for issue in issues_by_severity.critical %}
+        <div class="issue-card severity-critical">
+            <div class="issue-header">
+                <span class="issue-badge badge-critical">Kritisch</span>
+                <span class="issue-wcag">{{ issue.wcagCriterion or issue.wcag_criterion or 'WCAG' }}</span>
+            </div>
+            <p class="issue-description">{{ issue.description }}</p>
+            {% if issue.location or issue.element_selector %}
+            <div class="issue-location">{{ issue.location or issue.element_selector }}</div>
+            {% endif %}
+            {% if issue.recommendation or issue.suggested_fix %}
+            <div class="issue-recommendation">
+                <strong>Empfehlung:</strong>
+                {{ issue.recommendation or issue.suggested_fix }}
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </section>
+    {% endif %}
+    
+    {% if issues_by_severity.serious %}
+    <section class="section">
+        <h2 class="section-title">Schwerwiegende Probleme ({{ serious_count }})</h2>
+        {% for issue in issues_by_severity.serious %}
+        <div class="issue-card severity-serious">
+            <div class="issue-header">
+                <span class="issue-badge badge-serious">Schwerwiegend</span>
+                <span class="issue-wcag">{{ issue.wcagCriterion or issue.wcag_criterion or 'WCAG' }}</span>
+            </div>
+            <p class="issue-description">{{ issue.description }}</p>
+            {% if issue.location or issue.element_selector %}
+            <div class="issue-location">{{ issue.location or issue.element_selector }}</div>
+            {% endif %}
+            {% if issue.recommendation or issue.suggested_fix %}
+            <div class="issue-recommendation">
+                <strong>Empfehlung:</strong>
+                {{ issue.recommendation or issue.suggested_fix }}
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </section>
+    {% endif %}
+    
+    {% if issues_by_severity.moderate %}
+    <section class="section">
+        <h2 class="section-title">Moderate Probleme ({{ moderate_count }})</h2>
+        {% for issue in issues_by_severity.moderate %}
+        <div class="issue-card severity-moderate">
+            <div class="issue-header">
+                <span class="issue-badge badge-moderate">Moderat</span>
+                <span class="issue-wcag">{{ issue.wcagCriterion or issue.wcag_criterion or 'WCAG' }}</span>
+            </div>
+            <p class="issue-description">{{ issue.description }}</p>
+            {% if issue.location or issue.element_selector %}
+            <div class="issue-location">{{ issue.location or issue.element_selector }}</div>
+            {% endif %}
+            {% if issue.recommendation or issue.suggested_fix %}
+            <div class="issue-recommendation">
+                <strong>Empfehlung:</strong>
+                {{ issue.recommendation or issue.suggested_fix }}
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </section>
+    {% endif %}
+    
+    {% if issues_by_severity.minor %}
+    <section class="section">
+        <h2 class="section-title">Geringfügige Probleme ({{ minor_count }})</h2>
+        {% for issue in issues_by_severity.minor %}
+        <div class="issue-card severity-minor">
+            <div class="issue-header">
+                <span class="issue-badge badge-minor">Gering</span>
+                <span class="issue-wcag">{{ issue.wcagCriterion or issue.wcag_criterion or 'WCAG' }}</span>
+            </div>
+            <p class="issue-description">{{ issue.description }}</p>
+            {% if issue.location or issue.element_selector %}
+            <div class="issue-location">{{ issue.location or issue.element_selector }}</div>
+            {% endif %}
+            {% if issue.recommendation or issue.suggested_fix %}
+            <div class="issue-recommendation">
+                <strong>Empfehlung:</strong>
+                {{ issue.recommendation or issue.suggested_fix }}
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </section>
+    {% endif %}
+    
+    {% if not issues %}
+    <section class="section">
+        <h2 class="section-title">Keine Probleme gefunden</h2>
+        <p>Diese Website scheint keine erkennbaren Barrierefreiheitsprobleme zu haben. Herzlichen Glückwunsch!</p>
+    </section>
+    {% endif %}
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Dieser Bericht wurde automatisch von Ghost-UI generiert.</p>
+        <p>Die Analyse basiert auf WCAG 2.1 Level AA Richtlinien und dem Barrierefreiheitsstärkungsgesetz (BFSG).</p>
+        <p>&copy; {{ generated_date[:4] }} Ghost-UI Barrierefreiheits-Plattform</p>
+    </footer>
+</body>
+</html>

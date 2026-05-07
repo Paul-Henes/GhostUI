@@ -1,0 +1,53 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+build/
+.plasmo/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Secrets (niemals committen!)
+**/elevenlabs-secret.txt
+openai-secret.txt
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.python-version
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Testing
+coverage/
+.nyc_output/
+
+# Misc
+*.local
+.vercel
+
+# AI Agent Skills (not needed in repo)
+.agent/
+.agents/
+.claude/
+.cursor/
+.gemini/
+.kilocode/

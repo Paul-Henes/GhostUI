@@ -1,0 +1,16 @@
+{
+  "name": "@ghostui/tracking-script",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Embeddable tracking script for Ghost-UI",
+  "main": "./dist/tracking.js",
+  "scripts": {
+    "build": "esbuild src/index.ts --bundle --minify --format=iife --global-name=GhostUI --outfile=dist/tracking.js",
+    "build:dev": "esbuild src/index.ts --bundle --format=iife --global-name=GhostUI --outfile=dist/tracking.js --sourcemap",
+    "dev": "esbuild src/index.ts --bundle --format=iife --global-name=GhostUI --outfile=dist/tracking.js --watch"
+  },
+  "devDependencies": {
+    "esbuild": "^0.19.0",
+    "typescript": "^5.2.2"
+  }
+}

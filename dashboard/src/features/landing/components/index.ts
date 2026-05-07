@@ -1,0 +1,10 @@
+// Landing page components exports
+export { Hero } from './Hero'
+export { AuthCard } from './AuthCard'
+export { Stats } from './Stats'
+export { Features } from './Features'
+export { Capabilities } from './Capabilities'
+export { HowItWorks } from './HowItWorks'
+export { Testimonials } from './Testimonials'
+export { GetStarted } from './GetStarted'
+export { Footer } from './Footer'

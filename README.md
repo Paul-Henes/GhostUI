@@ -14,6 +14,8 @@
 
 **Our Solution**: Ghost-UI makes WCAG compliance as simple as adding one line of code. We combine AI-powered scanning (Gemini Vision), automatic fixes, and a user-facing accessibility widget to create a web that works for everyone.
 
+<img width="1430" height="769" alt="Screenshot 2026-05-07 at 13 33 41" src="https://github.com/user-attachments/assets/de8bc904-9abe-4d48-aa17-1fe16f670c55" />
+
 ---
 
 ## Architecture Overview
